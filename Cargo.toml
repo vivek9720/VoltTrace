@@ -1,0 +1,25 @@
+[package]
+name = "volttrace"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Offline EV charging operations bundle decoder and analyzer"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["ev", "charging", "parser", "fuzzing"]
+categories = ["parser-implementations", "network-programming"]
+
+[dependencies]
+
+[lib]
+name = "volttrace"
+path = "src/lib.rs"
+
+[profile.dev]
+overflow-checks = true
+
+[profile.release]
+opt-level = 3
+debug = true
+overflow-checks = true
+panic = "abort"

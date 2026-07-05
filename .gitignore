@@ -1,0 +1,5 @@
+/target/
+/fuzz/target/
+/out/
+crash-*
+artifacts/
