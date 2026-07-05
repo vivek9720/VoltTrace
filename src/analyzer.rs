@@ -64,7 +64,7 @@ impl Analyzer {
             self.scan_temperature(batch, findings);
             for summary in &batch.summaries {
                 let hint = catalog::meter_quality_hint(summary.channel as u16);
-                if summary.quality < hint / 2 {
+                if u32::from(summary.quality) < hint / 2 {
                     findings.push(AnalysisFinding { code: 2100, severity: 1, message: "meter quality below profile hint".to_string(), evidence: ((summary.channel as u64) << 32) | summary.quality as u64 });
                 }
             }

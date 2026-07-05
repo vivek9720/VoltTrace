@@ -123,7 +123,7 @@ fn enrich_summaries(batch: &mut TelemetryBatch) {
                 total += v as i64;
                 count += 1;
             }
-            let profile_quality = catalog::meter_quality_hint(channel as u16) as u16;
+            let profile_quality = catalog::meter_quality_hint(channel as u16).min(u16::MAX as u32) as u16;
             batch.summaries.push(MeterSummary { channel, min_value, max_value, mean_value: (total / count) as i32, quality: profile_quality });
         }
     }
